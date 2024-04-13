@@ -11,7 +11,7 @@
     <h1>Bezpieczny system ERP</h1>
 
     <h3>Wybierz moduł</h3>
-    <select name="modules" id="modules" onchange="modules();">
+    <select name="modules" id="modules" onchange="modules();options1();options3();">
         <option value="CRM">CRM</option>
         <option value="SELL">SELL</option>
         <option value="HR">HR</option>
@@ -19,7 +19,7 @@
 
     <div class="crm">
 
-        <select name="option" id="option" onchange="options1();">
+        <select name="option" id="option" onchange="options3();options1();">
             <option value="1">Opcja 1 - dodaj klienta</option>
             <option value="2">Opcja 2 - wyświetl listę klientów</option>
             <option value="3">Opcja 3 - modyfikacja klienta</option>
@@ -88,10 +88,64 @@
         </form>
     </div>
     <div class="hr">
-        <form action="src/crm.php" method="post">
+        <select name="option3" id="option3" onchange="options3();options1();">
+            <!-- najstarszy i najmlodszy pracocwnik[], średni wiek pracownikow, urodziny do 2 tygodni od podanej daty, 
+            okreslony poziom uprawnien, zwrocenie liczby pracownikow na dany dzial-->
+            <option value="1">Opcja 1 - dodaj klienta</option>
+            <option value="2">Opcja 2 - wyświetl najstarszego i najmlodszego pracownika</option>
+            <option value="3">Opcja 3 - sredni wiek pracownika</option>
+            <option value="4">Opcja 4 - sprawdz ile pracownikow ma konkretne uprawnienia</option>
+            <option value="5">Opcja 5 - sprawdz ile pracownikow pracuje w konkretnym dziale</option>
+        </select>
+        <div class="input">
+            <h3>Wprowadź dane</h3>
+            <form action="src/crm.php" method="post">
+                <label for="imie">Podaj imię</label>
+                <input type="text" name="imie"><br>
+                <label for="nazwisko">Podaj nazwisko</label>
+                <input type="text" name="nazwisko"><br>
+                <label for="wiek">Podaj swój wiek</label>
+                <input type="number" name="wiek"><br>
+                <label for="dzial">Podaj dział na którym pracujesz</label>
+                <input type="text" name="dzial"><br>
+                <input type="submit" name="dodajclienta">
+            </form>
+
+        </div>
+        <div class="maxmin">
+            <h3>Najmlodszy i najstarszy pracownik</h3><br>
+            <form action="src/hr.php" method="post">
+                <label for="maxmin">Sprawdz nazwe najmłodszego i najstarszego pracownika</label><br>
+                <input type="submit" value="Sprawdz" name="maxmin">
+            </form>
+        </div>
+
+        <div class="sredniwiek">
+            <h3>Sprawdź średni wiek pracowników</h3><br>
+            <form action="src/hr.php" method="post">
+                <input type="submit" name="sredniwiek">
+            </form>
+        </div>
+
+        <div class="check">
+            <h3>Wprowadź datę i zobacz kto w przeciągu najbliższych dwu tygodni ma urodziny</h3><br>
+            <form action="src/hr.php" method="post">
+                <label for="date">Wprowadź datę</label>
+                <input type="date" name="date"><br>
+                <input type="submit" value="Sprwadz" name="data">
+            </form>
+        </div>
+
+        <div class="specjalizacja">
+            <h3>Sprawdź ilu pracowników ma określony poziom uprawnień</h3><br>
+            <form action="src/hr.php" method="post">
+                <label for="uprawnienia">Podaj odpowiedni poziom uprawnień</label><br>
+                <input type="text" name="uprawnienia"><br>
+                <input type="submit" value="Sprawdz" name="uprawnienia">
+            </form>
+        </div>
 
 
-        </form>
     </div>
 
 
@@ -151,8 +205,47 @@
                 document.querySelector(".downloadEmail").style.display = "block";
             }
         }
+
+        function options3(){
+            var options3 = document.getElementById("option3");
+            var option3 = options3.value;
+            if(option3 == '1'){
+                document.querySelector(".input").style.display = "block";
+                document.querySelector(".maxmin").style.display = "none";
+                document.querySelector(".sredniwiek").style.display = "none";
+                document.querySelector(".check").style.display = "none";
+                document.querySelector(".specjalizacja").style.display = "none";
+            } else if (option3 == '2'){
+                document.querySelector(".input").style.display = "none";
+                document.querySelector(".maxmin").style.display = "block";
+                document.querySelector(".sredniwiek").style.display = "none";
+                document.querySelector(".check").style.display = "none";
+                document.querySelector(".specjalizacja").style.display = "none";
+            }else if( option3 =='3'){
+                document.querySelector(".input").style.display = "none";
+                document.querySelector(".maxmin").style.display = "none";
+                document.querySelector(".sredniwiek").style.display = "block";
+                document.querySelector(".check").style.display = "none";
+                document.querySelector(".specjalizacja").style.display = "none";
+            }else if(option3 =='4'){
+                document.querySelector(".input").style.display = "none";
+                document.querySelector(".maxmin").style.display = "none";
+                document.querySelector(".sredniwiek").style.display = "none";
+                document.querySelector(".check").style.display = "block";
+                document.querySelector(".specjalizacja").style.display = "none";
+            }else if(option3 = '5'){
+                document.querySelector(".input").style.display = "none";
+                document.querySelector(".maxmin").style.display = "none";
+                document.querySelector(".sredniwiek").style.display = "none";
+                document.querySelector(".check").style.display = "none";
+                document.querySelector(".specjalizacja").style.display = "block";
+            }
+            
+        }
+
         modules();
         options1();
+        options3();
     </script>
 </body>
 
