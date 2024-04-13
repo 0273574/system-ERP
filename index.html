@@ -1,11 +1,159 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bezpieczny system ERP</title>
 </head>
+
 <body>
-    
+    <h1>Bezpieczny system ERP</h1>
+
+    <h3>Wybierz moduł</h3>
+    <select name="modules" id="modules" onchange="modules();">
+        <option value="CRM">CRM</option>
+        <option value="SELL">SELL</option>
+        <option value="HR">HR</option>
+    </select>
+
+    <div class="crm">
+
+        <select name="option" id="option" onchange="options1();">
+            <option value="1">Opcja 1 - dodaj klienta</option>
+            <option value="2">Opcja 2 - wyświetl listę klientów</option>
+            <option value="3">Opcja 3 - modyfikacja klienta</option>
+            <option value="4">Opcja 4 - usuwanie klienta</option>
+            <option value="5">Opcja 5 - pobierz adresy e-mail</option>
+        </select>
+
+
+        <div class="addClient">
+            <h3>Dodaj klienta</h3>
+            <form action="crm.php" method="post">
+                <label for="imie">Podaj swoje imię</label>
+                <input type="text" name="imie"><br>
+                <label for="email">Podaj swój e-mail</label>
+                <input type="email" name="email" id="email"><br>
+                <h3 style="margin-bottom: 0px;">Status subskrypcji</h3><br>
+                <label>Aktywna</label><input type="radio" name="status" value="aktywna"><br>
+                <label>Nieaktywna</label><input type="radio" name="status" value="nieaktywna"><br>
+                <input type="submit" name="dodaj" value="Dodaj klienta">
+            </form>
+        </div>
+
+        <div class="listClient">
+            <form action="crm.php" method="post">
+                <label for="wyswietl">Wyświetl liste klientów</label>
+                <input type="submit" value="Wyswietl" name="wyswietl">
+            </form>
+        </div>
+
+        <div class="modifyClient">
+            <h3>Zmodyfikuj klienta</h3>
+            <form action="crm.php" method="post">
+                <label for="id">Podaj id klienta</label>
+                <input type="text" name="id"><br>
+                <label for="imie">Podaj nowe imię</label>
+                <input type="text" name="imie"><br>
+                <label for="email">Podaj nowy e-mail</label>
+                <input type="email" name="email" id="email"><br>
+                <h3 style="margin-bottom: 0px;">Status subskrypcji</h3><br>
+                <label>Aktywna</label><input type="radio" name="status" value="aktywna"><br>
+                <label>Nieaktywna</label><input type="radio" name="status" value="nieaktywna"><br>
+                <input type="submit" name="modyfikuj" value="Modyfikuj klienta">
+            </form>
+        </div>
+
+        <div class="removeClient">
+            <form action="crm.php" method="post">
+                <label for="idold">Podaj ID klienta do usunięcia:</label>
+                <input type="text" name="idold"><br>
+                <input type="submit" name="usun" value="Usuń klienta">
+            </form>
+        </div>
+
+        <div class="downloadEmail">
+            <form action="crm.php" method="post">
+                <label for="pobierz">Pobierz wszystkie maile</label><br>
+                <input type="submit" name="pobierz" value="Pobierz">
+            </form>
+        </div>
+        </form>
+    </div>
+    <div class="sell">
+        <form action="src/sell.php" method="post">
+
+
+        </form>
+    </div>
+    <div class="hr">
+        <form action="src/crm.php" method="post">
+
+
+        </form>
+    </div>
+
+
+
+    <script>
+
+        function modules() {
+            var modules = document.getElementById("modules");
+            var module = modules.value;
+            if (module == "CRM") {
+                document.querySelector(".crm").style.display = "block";
+                document.querySelector(".sell").style.display = "none";
+                document.querySelector(".hr").style.display = "none";
+            } else if (module == "SELL") {
+                document.querySelector(".crm").style.display = "none";
+                document.querySelector(".sell").style.display = "block";
+                document.querySelector(".hr").style.display = "none";
+            } else if (module == "HR") {
+                document.querySelector(".crm").style.display = "none";
+                document.querySelector(".sell").style.display = "none";
+                document.querySelector(".hr").style.display = "block";
+            }
+        }
+
+        function options1() {
+            var options = document.getElementById("option");
+            var option = options.value;
+            if (option == "1") {
+                document.querySelector(".addClient").style.display = "block";
+                document.querySelector(".listClient").style.display = "none";
+                document.querySelector(".modifyClient").style.display = "none";
+                document.querySelector(".removeClient").style.display = "none";
+                document.querySelector(".downloadEmail").style.display = "none";
+            } else if (option == "2") {
+                document.querySelector(".addClient").style.display = "none";
+                document.querySelector(".listClient").style.display = "block";
+                document.querySelector(".modifyClient").style.display = "none";
+                document.querySelector(".removeClient").style.display = "none";
+                document.querySelector(".downloadEmail").style.display = "none";
+            } else if (option == "3") {
+                document.querySelector(".addClient").style.display = "none";
+                document.querySelector(".listClient").style.display = "none";
+                document.querySelector(".modifyClient").style.display = "block";
+                document.querySelector(".removeClient").style.display = "none";
+                document.querySelector(".downloadEmail").style.display = "none";
+            } else if (option == "4") {
+                document.querySelector(".addClient").style.display = "none";
+                document.querySelector(".listClient").style.display = "none";
+                document.querySelector(".modifyClient").style.display = "none";
+                document.querySelector(".removeClient").style.display = "block";
+                document.querySelector(".downloadEmail").style.display = "none";
+            } else if (option == "5") {
+                document.querySelector(".addClient").style.display = "none";
+                document.querySelector(".listClient").style.display = "none";
+                document.querySelector(".modifyClient").style.display = "none";
+                document.querySelector(".removeClient").style.display = "none";
+                document.querySelector(".downloadEmail").style.display = "block";
+            }
+        }
+        modules();
+        options1();
+    </script>
 </body>
+
 </html>
