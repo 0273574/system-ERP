@@ -34,3 +34,8 @@ Zaimplementuj moduł HR z podstawowymi i specjalnymi operacjami.
 4. Zwróć nazwy pracowników, którzy mają urodziny w ciągu dwóch tygodni od daty wejściowej.
 5. Zwróć liczbę pracowników, którzy mają co najmniej określony poziom uprawnień.
 6. Zwróć liczbę pracowników na oddział w formie tablicy asocjacyjnej (np. ['dep1': 5, 'dep2': 11]).
+
+
+Żeby sklonować repozytorium do siebie
+$ git clone https://github.com/0273574/system-ERP.git
+
