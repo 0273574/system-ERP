@@ -36,7 +36,7 @@ Zaimplementuj moduł HR z podstawowymi i specjalnymi operacjami.
 6. Zwróć liczbę pracowników na oddział w formie tablicy asocjacyjnej (np. ['dep1': 5, 'dep2': 11]).
 
 
-## Żeby sklonować repozytorium do siebie
+## Sklonuj repozytorium
 ```
 $ git clone https://github.com/0273574/system-ERP.git
 ```
