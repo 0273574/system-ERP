@@ -11,7 +11,7 @@
     <h1>Bezpieczny system ERP</h1>
 
     <h3>Wybierz moduł</h3>
-    <select name="modules" id="modules" onchange="modules();options1();options3();">
+    <select name="modules" id="modules" onchange="modules();options1();options3();options2();">
         <option value="CRM">CRM</option>
         <option value="SELL">SELL</option>
         <option value="HR">HR</option>
@@ -19,7 +19,7 @@
 
     <div class="crm">
 
-        <select name="option" id="option" onchange="options3();options1();">
+        <select name="option" id="option" onchange="options3();options1();options2();">
             <option value="1">Opcja 1 - dodaj klienta</option>
             <option value="2">Opcja 2 - wyświetl listę klientów</option>
             <option value="3">Opcja 3 - modyfikacja klienta</option>
@@ -82,13 +82,54 @@
         </form>
     </div>
     <div class="sell">
-        <form action="src/sell.php" method="post">
-
-
-        </form>
+            <select name="option2" id="option2" onchange="options3();options1();options2();">
+                <option value="1">Dodaj transakcje</option>
+                <option value="2">Wyświetl listę transakcji</option>
+                <option value="3">Zmodyfikacja transakcje</option>
+                <option value="4">Usuwanie transakcji</option>
+            </select>
+        <div class="addTransaction">
+            <h3>Dodaj transakcje</h3>
+            <form action="src/sell.php" method="post">
+                <label for="nazwa">Podaj nazwe transakcji</label>
+                <input type="text" name="nazwa"><br>
+                <label for="cena">Podaj cene transakcji</label>
+                <input type="number" name="cena" id="cena"><br>
+                <label for="data_transakcji">Podaj date transakcji</label>
+                <input type="date" name="data_transakcji" id="data_transakcji"><br>
+                <input type="submit" name="dodaj2" value="Dodaj transakcje">
+            </form>
+        </div>
+        <div class="listTransaction">
+            <form action="src/sell.php" method="post">
+                <label for="wyswietl2">Wyświetl liste transakcji</label>
+                <input type="submit" value="Wyswietl" name="wyswietl2">
+            </form>
+        </div>
+        <div class="modifyTransaction">
+            <h3>Zmodyfikuj transakcje</h3>
+            <form action="src/sell.php" method="post">
+                <label for="id2">Podaj id transakcji</label>
+                <input type="text" name="id2"><br>
+                <label for="nazwa">Podaj nazwe transakcji</label>
+                <input type="text" name="nazwa"><br>
+                <label for="cena">Podaj cene transakcji</label>
+                <input type="number" name="cena" id="cena"><br>
+                <label for="data_transakcji">Podaj date transakcji</label>
+                <input type="date" name="data_transakcji" id="data_transakcji"><br>
+                <input type="submit" name="modyfikuj2" value="Zmodyfikuj transakcje">
+            </form>
+        </div>
+        <div class="removeTransaction">
+            <form action="src/sell.php" method="post">
+                <label for="idold2">Podaj id transakcji do usunięcia:</label>
+                <input type="text" name="idold2"><br>
+                <input type="submit" name="usun2" value="Usuń transakcji">
+            </form>
+        </div>
     </div>
     <div class="hr">
-        <select name="option3" id="option3" onchange="options3();options1();">
+        <select name="option3" id="option3" onchange="options3();options1();options2();">
             <!-- najstarszy i najmlodszy pracocwnik[], średni wiek pracownikow, urodziny do 2 tygodni od podanej daty, 
             okreslony poziom uprawnien, zwrocenie liczby pracownikow na dany dzial-->
             <option value="1">Opcja 1 - dodaj klienta</option>
@@ -218,6 +259,31 @@
                 document.querySelector(".downloadEmail").style.display = "block";
             }
         }
+        function options2() {
+            var options2 = document.getElementById("option2");
+            var option2 = options2.value;
+            if (option2 == "1") {
+                document.querySelector(".addTransaction").style.display = "block";
+                document.querySelector(".listTransaction").style.display = "none";
+                document.querySelector(".modifyTransaction").style.display = "none";
+                document.querySelector(".removeTransaction").style.display = "none";
+            } else if (option2 == "2") {
+                document.querySelector(".addTransaction").style.display = "none";
+                document.querySelector(".listTransaction").style.display = "block";
+                document.querySelector(".modifyTransaction").style.display = "none";
+                document.querySelector(".removeTransaction").style.display = "none";
+            } else if (option2 == "3") {
+                document.querySelector(".addTransaction").style.display = "none";
+                document.querySelector(".listTransaction").style.display = "none";
+                document.querySelector(".modifyTransaction").style.display = "block";
+                document.querySelector(".removeTransaction").style.display = "none";
+            } else if (option2 == "4") {
+                document.querySelector(".addTransaction").style.display = "none";
+                document.querySelector(".listTransaction").style.display = "none";
+                document.querySelector(".modifyTransaction").style.display = "none";
+                document.querySelector(".removeTransaction").style.display = "block";
+            }
+        }
 
         function options3(){
             var options3 = document.getElementById("option3");
@@ -270,6 +336,7 @@
 
         modules();
         options1();
+        options2(); 
         options3();
     </script>
 </body>
