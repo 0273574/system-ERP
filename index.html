@@ -30,7 +30,7 @@
 
         <div class="addClient">
             <h3>Dodaj klienta</h3>
-            <form action="crm.php" method="post">
+            <form action="src/crm.php" method="post">
                 <label for="imie">Podaj swoje imię</label>
                 <input type="text" name="imie"><br>
                 <label for="email">Podaj swój e-mail</label>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="listClient">
-            <form action="crm.php" method="post">
+            <form action="src/crm.php" method="post">
                 <label for="wyswietl">Wyświetl liste klientów</label>
                 <input type="submit" value="Wyswietl" name="wyswietl">
             </form>
@@ -51,7 +51,7 @@
 
         <div class="modifyClient">
             <h3>Zmodyfikuj klienta</h3>
-            <form action="crm.php" method="post">
+            <form action="src/crm.php" method="post">
                 <label for="id">Podaj id klienta</label>
                 <input type="text" name="id"><br>
                 <label for="imie">Podaj nowe imię</label>
@@ -66,7 +66,7 @@
         </div>
 
         <div class="removeClient">
-            <form action="crm.php" method="post">
+            <form action="src/crm.php" method="post">
                 <label for="idold">Podaj ID klienta do usunięcia:</label>
                 <input type="text" name="idold"><br>
                 <input type="submit" name="usun" value="Usuń klienta">
@@ -74,7 +74,7 @@
         </div>
 
         <div class="downloadEmail">
-            <form action="crm.php" method="post">
+            <form action="src/crm.php" method="post">
                 <label for="pobierz">Pobierz wszystkie maile</label><br>
                 <input type="submit" name="pobierz" value="Pobierz">
             </form>
@@ -94,21 +94,26 @@
             <option value="1">Opcja 1 - dodaj klienta</option>
             <option value="2">Opcja 2 - wyświetl najstarszego i najmlodszego pracownika</option>
             <option value="3">Opcja 3 - sredni wiek pracownika</option>
-            <option value="4">Opcja 4 - sprawdz ile pracownikow ma konkretne uprawnienia</option>
-            <option value="5">Opcja 5 - sprawdz ile pracownikow pracuje w konkretnym dziale</option>
+            <option value="4">Opcja 4 - sprawdz kto ma urodziny przez najbliższe dwa tygodnie</option>
+            <option value="5">Opcja 5 -  sprawdz ile pracownikow ma konkretne uprawnienia</option>
+            <option value="oddzial">Opcja 6 - sprawdz ile pracownikow pracuje w konkretnym dziale</option>
         </select>
         <div class="input">
             <h3>Wprowadź dane</h3>
-            <form action="src/crm.php" method="post">
+            <form action="src/hr.php" method="post">
                 <label for="imie">Podaj imię</label>
                 <input type="text" name="imie"><br>
                 <label for="nazwisko">Podaj nazwisko</label>
                 <input type="text" name="nazwisko"><br>
                 <label for="wiek">Podaj swój wiek</label>
                 <input type="number" name="wiek"><br>
+                <label for="urodzenie">Podaj date urodzenia</label>
+                <input type="date" name="urodzenie"><br>
                 <label for="dzial">Podaj dział na którym pracujesz</label>
                 <input type="text" name="dzial"><br>
-                <input type="submit" name="dodajclienta">
+                <input type="submit" value="Dodaj klienta" name="dodajclienta"><br>
+                <input type="submit" value="Usuń klienta" name="usunclienta"><br>
+                <input type="submit" value="Zobacz liste klientów" name="pokazliste"><br>
             </form>
 
         </div>
@@ -142,6 +147,14 @@
                 <label for="uprawnienia">Podaj odpowiedni poziom uprawnień</label><br>
                 <input type="text" name="uprawnienia"><br>
                 <input type="submit" value="Sprawdz" name="uprawnienia">
+            </form>
+        </div>
+        <div class="oddzial">
+            <h3>Sprawdź ilu pracowników pracuje w konkretnym dziale</h3><br>
+            <form action="src/hr.php" method="post">
+                <label for="dzial">Podaj nazwe dzialu</label><br>
+                <input type="text" name="dzial"><br>
+                <input type="submit" value="Sprawdz" name="dzial">
             </form>
         </div>
 
@@ -215,30 +228,42 @@
                 document.querySelector(".sredniwiek").style.display = "none";
                 document.querySelector(".check").style.display = "none";
                 document.querySelector(".specjalizacja").style.display = "none";
+                document.querySelector(".oddzial").style.display = "none";
             } else if (option3 == '2'){
                 document.querySelector(".input").style.display = "none";
                 document.querySelector(".maxmin").style.display = "block";
                 document.querySelector(".sredniwiek").style.display = "none";
                 document.querySelector(".check").style.display = "none";
                 document.querySelector(".specjalizacja").style.display = "none";
+                document.querySelector(".oddzial").style.display = "none";
             }else if( option3 =='3'){
                 document.querySelector(".input").style.display = "none";
                 document.querySelector(".maxmin").style.display = "none";
                 document.querySelector(".sredniwiek").style.display = "block";
                 document.querySelector(".check").style.display = "none";
                 document.querySelector(".specjalizacja").style.display = "none";
+                document.querySelector(".oddzial").style.display = "none";
             }else if(option3 =='4'){
                 document.querySelector(".input").style.display = "none";
                 document.querySelector(".maxmin").style.display = "none";
                 document.querySelector(".sredniwiek").style.display = "none";
                 document.querySelector(".check").style.display = "block";
                 document.querySelector(".specjalizacja").style.display = "none";
-            }else if(option3 = '5'){
+                document.querySelector(".oddzial").style.display = "none";
+            }else if(option3 =='5'){
                 document.querySelector(".input").style.display = "none";
                 document.querySelector(".maxmin").style.display = "none";
                 document.querySelector(".sredniwiek").style.display = "none";
                 document.querySelector(".check").style.display = "none";
                 document.querySelector(".specjalizacja").style.display = "block";
+                document.querySelector(".oddzial").style.display = "none";
+            }   else if(option3 == 'oddzial'){
+                document.querySelector(".input").style.display = "none";
+                document.querySelector(".maxmin").style.display = "none";
+                document.querySelector(".sredniwiek").style.display = "none";
+                document.querySelector(".check").style.display = "none";
+                document.querySelector(".specjalizacja").style.display = "none";
+                document.querySelector(".oddzial").style.display = "block";
             }
             
         }
