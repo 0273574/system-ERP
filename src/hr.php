@@ -1,13 +1,14 @@
 <?php
-
+// cały ten kod odnosi się tylko i wyłącznie do działu HR
 if (isset($_POST['dodajclienta'])) {
     $imie = $_POST['imie'];
     $nazwisko = $_POST['nazwisko'];
     $wiek = $_POST['wiek'];
     $dzial = $_POST['dzial'];
     $urodzenie = $_POST['urodzenie'];
+    $uprawnienia = $_POST['uprawnienia'];
     $plik = fopen('dane.txt', "a+");
-    $line = $imie . ' ' . $urodzenie . ' ' . $wiek . ' ' . $nazwisko . ' ' . $dzial;
+    $line = $imie . ' ' . $urodzenie . ' ' . $wiek . ' ' . $nazwisko . ' ' . $dzial . ' ' . $uprawnienia;
     fwrite($plik, $line . "\n");
     echo "Pomyślnie dodano klienta do listy o danych : " . $line;
 }
@@ -81,8 +82,8 @@ if (isset($_POST['sredniwiek'])) {
         while (($line = fgets($plik)) !== false) {
             $line = trim($line);
             $slowa = explode(' ', $line);
-            if (!empty($slowa[0])) {
-                $wiektablica[] = intval($slowa[0]);
+            if (!empty($slowa[2])) {
+                $wiektablica[] = intval($slowa[2]);
             }
         }
         fclose($plik);
@@ -94,8 +95,75 @@ if (isset($_POST['sredniwiek'])) {
 }
 
 
+if(isset($_POST["uprawnienia"])) {
+$plik = fopen("dane.txt","r");
+$poziomUprawnien = $_POST["uprawnienia1"];
+$licznik = 0;
+    if ($plik) {
+        while (($line = fgets($plik)) !== false) {
+            $line = trim($line);
+            $slowa = explode(' ', $line);
+            if ($slowa[5] == $poziomUprawnien && !empty($slowa[5])) {
+                $licznik++;
+            }
+        }
+        fclose($plik);
+    } else {
+        echo "Nie udało się otworzyć pliku.";
+    }
+    echo 'Liczba pracowników o podanym poziomie uprawnien : ' . $licznik;
+
+}
+
+if(isset($_POST['data'])) {
+    $plik = fopen('dane.txt', 'r');
+    if ($plik) {
+        $data = strtotime($_POST['date']); 
+        $data_plus_2_tygodnie = strtotime('+2 weeks', $data); 
+        $znaleziono = false; 
+        
+        while (($line = fgets($plik)) !== false) {
+            $elementy = explode(' ', $line);
+            if (count($elementy) >= 2) { 
+                $urodziny = strtotime($elementy[1]); 
+                if ($urodziny >= $data && $urodziny <= $data_plus_2_tygodnie) {
+                    echo "Osoba o nazwie " . $elementy[0] . " ma urodziny w ciągu najbliższych dwóch tygodni od daty " . date('Y-m-d', $data) . ".<br>";
+                    $znaleziono = true;
+                }
+            } else {
+                echo "Błąd: Nieprawidłowy format danych w pliku.<br>";
+            }
+        }
+        if (!$znaleziono) {
+            echo "Brak osób z urodzinami w ciągu najbliższych dwóch tygodni od daty " . date('Y-m-d', $data) . ".<br>";
+        }
+        fclose($plik);
+    } else {
+        echo "Błąd: Nie można otworzyć pliku dane.txt.<br>";
+    }
+}
 
 
-
-
-
+if(isset($_POST["dzial"])) {
+    $plik = fopen("dane.txt","r");
+    $licznikiDzialow = array(); 
+    if ($plik) {
+        while (($line = fgets($plik)) !== false) {
+            $line = trim($line);
+            $slowa = explode(' ', $line);
+            $dzial = $slowa[4];
+            if (isset($licznikiDzialow[$dzial])) {
+                $licznikiDzialow[$dzial]++;
+            } else {
+                $licznikiDzialow[$dzial] = 1;
+            }
+        }
+        
+        fclose($plik);
+        foreach ($licznikiDzialow as $dzial => $licznik) {
+            echo "W dziale " . $dzial . " jest " . $licznik . " pracowników<br>";
+        }
+    }
+    echo "Wynik tablicy asocjacyjnej : <br>";
+    echo json_encode($licznikiDzialow);
+}
