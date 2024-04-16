@@ -16,7 +16,7 @@
         <option value="SELL">SELL</option>
         <option value="HR">HR</option>
     </select>
-
+    <!-- Moduł CRM -->
     <div class="crm">
 
         <select name="option" id="option" onchange="options3();options1();options2();">
@@ -81,23 +81,32 @@
         </div>
         </form>
     </div>
+    <!-- Moduł SELL -->
     <div class="sell">
-            <select name="option2" id="option2" onchange="options3();options1();options2();">
-                <option value="1">Dodaj transakcje</option>
-                <option value="2">Wyświetl listę transakcji</option>
-                <option value="3">Zmodyfikacja transakcje</option>
-                <option value="4">Usuwanie transakcji</option>
-            </select>
+        <select name="option2" id="option2" onchange="options3();options1();options2();">
+            <!-- operacje CRUD-->
+            <option value="1">Opcje 1 - a) Dodaj transakcje</option>
+            <option value="2"> b)Wyświetl listę transakcji</option>
+            <option value="3"> c)Zmodyfikuj transakcje</option>
+            <option value="4"> d)Usuwanie transakcji</option>
+            <!-- operacje zapytania zwracajce dane do pliku  -->
+            <option value="5">Opcja 2 - Pobierz transakcje która przyniosła największe przychody</option>
+            <option value="6">Opcja 3 - Pobierz produkt, który przyniósł największe przychody ogółem</option>
+            <option value="7">Opcja 4 - Policzyć liczbę transakcji między dwoma datami.</option>
+            <option value="8">Opcja 5 - Zsumuj cenę transakcji między dwoma datami.</option>
+        </select>
         <div class="addTransaction">
             <h3>Dodaj transakcje</h3>
             <form action="src/sell.php" method="post">
-                <label for="nazwa">Podaj nazwe transakcji</label>
-                <input type="text" name="nazwa"><br>
-                <label for="cena">Podaj cene transakcji</label>
-                <input type="number" name="cena" id="cena"><br>
-                <label for="data_transakcji">Podaj date transakcji</label>
-                <input type="date" name="data_transakcji" id="data_transakcji"><br>
-                <input type="submit" name="dodaj2" value="Dodaj transakcje">
+                <ladel for="nazwa">Podaj nazwe transakcji</label>
+                    <input type="text" name="nazwa"><br>
+                    <label for="cena">Podaj cene transakcji</label>
+                    <input type="number" name="cena" id="cena"><br>
+                    <label for="produkt">Podaj produkt</label>
+                    <input type="text" name="produkt" id="produkt"><br>
+                    <label for="data_transakcji">Podaj date transakcji</label>
+                    <input type="date" name="data_transakcji" id="data_transakcji"><br>
+                    <input type="submit" name="dodaj2" value="Dodaj transakcje">
             </form>
         </div>
         <div class="listTransaction">
@@ -115,6 +124,8 @@
                 <input type="text" name="nazwa"><br>
                 <label for="cena">Podaj cene transakcji</label>
                 <input type="number" name="cena" id="cena"><br>
+                <label for="produkt">Podaj produkt</label>
+                <input type="text" name="produkt" id="produkt"><br>
                 <label for="data_transakcji">Podaj date transakcji</label>
                 <input type="date" name="data_transakcji" id="data_transakcji"><br>
                 <input type="submit" name="modyfikuj2" value="Zmodyfikuj transakcje">
@@ -122,12 +133,48 @@
         </div>
         <div class="removeTransaction">
             <form action="src/sell.php" method="post">
-                <label for="idold2">Podaj id transakcji do usunięcia:</label>
-                <input type="text" name="idold2"><br>
+                <label for="idold2">Podaj nazwe transakcji do usunięcia:</label>
+                <input type="text" name="nazwa"><br>
                 <input type="submit" name="usun2" value="Usuń transakcji">
             </form>
         </div>
+        <div class="downloadTransaction">
+            <form action="src/sell.php" method="post">
+                <label for="pobierz2">Pobierz transakcje która przyniosła największe przchody</label><br>
+                <input type="submit" name="pobierz2" value="Pobierz">
+            </form>
+        </div>
+        <div class="downloadProduct">
+            <form action="src/sell.php" method="post">
+                <label for="pobierz3">Pobierz największe przychody (produkt) </label><br>
+                <input type="submit" name="pobierz3" value="Pobierz">
+            </form>
+        </div>
+        <div class="liczbatransakcji">
+            <form action="src/sell.php" method="post">
+
+                <label for="data1">Podaj date początkowa</label>
+                <input type="date" name="data1" id="data1"><br>
+                <label for="data2">Podaj date koncowa</label>
+                <input type="date" name="data2" id="data2"><br><label for="pobierz4">Policz liczbę transakcji między
+                    dwoma datami</label><br>
+                <input type="submit" name="pobierz4" value="Policz">
+            </form>
+        </div>
+        <div class="sumowanietransakcji">
+            <form action="src/sell.php" method="post">
+
+                <label for="data3">Podaj date początkowa</label>
+                <input type="date" name="data3" id="data3"><br>
+                <label for="data4">Podaj date koncowa</label>
+                <input type="date" name="data4" id="data4"><br><label for="pobierz5">Policz sumę transakcji między dwoma
+                    datami</label><br>
+                <input type="submit" name="pobierz5" value="Policz">
+            </form>
+        </div>
+
     </div>
+    <!-- Moduł HR -->
     <div class="hr">
         <select name="option3" id="option3" onchange="options3();options1();options2();">
             <!-- najstarszy i najmlodszy pracocwnik[], średni wiek pracownikow, urodziny do 2 tygodni od podanej daty, 
@@ -136,7 +183,7 @@
             <option value="2">Opcja 2 - wyświetl najstarszego i najmlodszego pracownika</option>
             <option value="3">Opcja 3 - sredni wiek pracownika</option>
             <option value="4">Opcja 4 - sprawdz kto ma urodziny przez najbliższe dwa tygodnie</option>
-            <option value="5">Opcja 5 -  sprawdz ile pracownikow ma konkretne uprawnienia</option>
+            <option value="5">Opcja 5 - sprawdz ile pracownikow ma konkretne uprawnienia</option>
             <option value="oddzial">Opcja 6 - sprawdz ile pracownikow pracuje w konkretnym dziale</option>
         </select>
         <div class="input">
@@ -152,6 +199,8 @@
                 <input type="date" name="urodzenie"><br>
                 <label for="dzial">Podaj dział na którym pracujesz</label>
                 <input type="text" name="dzial"><br>
+                <label for="uprawnienia">Podaj dział na którym pracujesz</label>
+                <input type="text" name="uprawnienia"><br>
                 <input type="submit" value="Dodaj klienta" name="dodajclienta"><br>
                 <input type="submit" value="Usuń klienta" name="usunclienta"><br>
                 <input type="submit" value="Zobacz liste klientów" name="pokazliste"><br>
@@ -186,7 +235,7 @@
             <h3>Sprawdź ilu pracowników ma określony poziom uprawnień</h3><br>
             <form action="src/hr.php" method="post">
                 <label for="uprawnienia">Podaj odpowiedni poziom uprawnień</label><br>
-                <input type="text" name="uprawnienia"><br>
+                <input type="text" name="uprawnienia1"><br>
                 <input type="submit" value="Sprawdz" name="uprawnienia">
             </form>
         </div>
@@ -194,7 +243,7 @@
             <h3>Sprawdź ilu pracowników pracuje w konkretnym dziale</h3><br>
             <form action="src/hr.php" method="post">
                 <label for="dzial">Podaj nazwe dzialu</label><br>
-                <input type="text" name="dzial"><br>
+                <input type="text" name="dzial1"><br>
                 <input type="submit" value="Sprawdz" name="dzial">
             </form>
         </div>
@@ -267,63 +316,115 @@
                 document.querySelector(".listTransaction").style.display = "none";
                 document.querySelector(".modifyTransaction").style.display = "none";
                 document.querySelector(".removeTransaction").style.display = "none";
+                document.querySelector(".downloadTransaction").style.display = "none";
+                document.querySelector(".downloadProduct").style.display = "none";
+                document.querySelector(".liczbatransakcji").style.display = "none";
+                document.querySelector(".sumowanietransakcji").style.display = "none";
             } else if (option2 == "2") {
                 document.querySelector(".addTransaction").style.display = "none";
                 document.querySelector(".listTransaction").style.display = "block";
                 document.querySelector(".modifyTransaction").style.display = "none";
                 document.querySelector(".removeTransaction").style.display = "none";
+                document.querySelector(".downloadTransaction").style.display = "none";
+                document.querySelector(".downloadProduct").style.display = "none";
+                document.querySelector(".liczbatransakcji").style.display = "none";
+                document.querySelector(".sumowanietransakcji").style.display = "none";
             } else if (option2 == "3") {
                 document.querySelector(".addTransaction").style.display = "none";
                 document.querySelector(".listTransaction").style.display = "none";
                 document.querySelector(".modifyTransaction").style.display = "block";
                 document.querySelector(".removeTransaction").style.display = "none";
+                document.querySelector(".downloadTransaction").style.display = "none";
+                document.querySelector(".downloadProduct").style.display = "none";
+                document.querySelector(".liczbatransakcji").style.display = "none";
+                document.querySelector(".sumowanietransakcji").style.display = "none";
             } else if (option2 == "4") {
                 document.querySelector(".addTransaction").style.display = "none";
                 document.querySelector(".listTransaction").style.display = "none";
                 document.querySelector(".modifyTransaction").style.display = "none";
                 document.querySelector(".removeTransaction").style.display = "block";
+                document.querySelector(".downloadTransaction").style.display = "none";
+                document.querySelector(".downloadProduct").style.display = "none";
+                document.querySelector(".liczbatransakcji").style.display = "none";
+                document.querySelector(".sumowanietransakcji").style.display = "none";
+            } else if (option2 == "5") {
+                document.querySelector(".addTransaction").style.display = "none";
+                document.querySelector(".listTransaction").style.display = "none";
+                document.querySelector(".modifyTransaction").style.display = "none";
+                document.querySelector(".removeTransaction").style.display = "none";
+                document.querySelector(".downloadTransaction").style.display = "block";
+                document.querySelector(".downloadProduct").style.display = "none";
+                document.querySelector(".liczbatransakcji").style.display = "none";
+                document.querySelector(".sumowanietransakcji").style.display = "none";
+            } else if (option2 == "6") {
+                document.querySelector(".addTransaction").style.display = "none";
+                document.querySelector(".listTransaction").style.display = "none";
+                document.querySelector(".modifyTransaction").style.display = "none";
+                document.querySelector(".removeTransaction").style.display = "none";
+                document.querySelector(".downloadTransaction").style.display = "none";
+                document.querySelector(".downloadProduct").style.display = "block";
+                document.querySelector(".liczbatransakcji").style.display = "none";
+                document.querySelector(".sumowanietransakcji").style.display = "none";
+            } else if (option2 == "7") {
+                document.querySelector(".addTransaction").style.display = "none";
+                document.querySelector(".listTransaction").style.display = "none";
+                document.querySelector(".modifyTransaction").style.display = "none";
+                document.querySelector(".removeTransaction").style.display = "none";
+                document.querySelector(".downloadTransaction").style.display = "none";
+                document.querySelector(".downloadProduct").style.display = "none";
+                document.querySelector(".liczbatransakcji").style.display = "block";
+                document.querySelector(".sumowanietransakcji").style.display = "none";
+            } else if (option2 == "8") {
+                document.querySelector(".addTransaction").style.display = "none";
+                document.querySelector(".listTransaction").style.display = "none";
+                document.querySelector(".modifyTransaction").style.display = "none";
+                document.querySelector(".removeTransaction").style.display = "none";
+                document.querySelector(".downloadTransaction").style.display = "none";
+                document.querySelector(".downloadProduct").style.display = "none";
+                document.querySelector(".liczbatransakcji").style.display = "none";
+                document.querySelector(".sumowanietransakcji").style.display = "block";
             }
         }
 
-        function options3(){
+        function options3() {
             var options3 = document.getElementById("option3");
             var option3 = options3.value;
-            if(option3 == '1'){
+            if (option3 == '1') {
                 document.querySelector(".input").style.display = "block";
                 document.querySelector(".maxmin").style.display = "none";
                 document.querySelector(".sredniwiek").style.display = "none";
                 document.querySelector(".check").style.display = "none";
                 document.querySelector(".specjalizacja").style.display = "none";
                 document.querySelector(".oddzial").style.display = "none";
-            } else if (option3 == '2'){
+            } else if (option3 == '2') {
                 document.querySelector(".input").style.display = "none";
                 document.querySelector(".maxmin").style.display = "block";
                 document.querySelector(".sredniwiek").style.display = "none";
                 document.querySelector(".check").style.display = "none";
                 document.querySelector(".specjalizacja").style.display = "none";
                 document.querySelector(".oddzial").style.display = "none";
-            }else if( option3 =='3'){
+            } else if (option3 == '3') {
                 document.querySelector(".input").style.display = "none";
                 document.querySelector(".maxmin").style.display = "none";
                 document.querySelector(".sredniwiek").style.display = "block";
                 document.querySelector(".check").style.display = "none";
                 document.querySelector(".specjalizacja").style.display = "none";
                 document.querySelector(".oddzial").style.display = "none";
-            }else if(option3 =='4'){
+            } else if (option3 == '4') {
                 document.querySelector(".input").style.display = "none";
                 document.querySelector(".maxmin").style.display = "none";
                 document.querySelector(".sredniwiek").style.display = "none";
                 document.querySelector(".check").style.display = "block";
                 document.querySelector(".specjalizacja").style.display = "none";
                 document.querySelector(".oddzial").style.display = "none";
-            }else if(option3 =='5'){
+            } else if (option3 == '5') {
                 document.querySelector(".input").style.display = "none";
                 document.querySelector(".maxmin").style.display = "none";
                 document.querySelector(".sredniwiek").style.display = "none";
                 document.querySelector(".check").style.display = "none";
                 document.querySelector(".specjalizacja").style.display = "block";
                 document.querySelector(".oddzial").style.display = "none";
-            }   else if(option3 == 'oddzial'){
+            } else if (option3 == 'oddzial') {
                 document.querySelector(".input").style.display = "none";
                 document.querySelector(".maxmin").style.display = "none";
                 document.querySelector(".sredniwiek").style.display = "none";
@@ -331,12 +432,12 @@
                 document.querySelector(".specjalizacja").style.display = "none";
                 document.querySelector(".oddzial").style.display = "block";
             }
-            
+
         }
 
         modules();
         options1();
-        options2(); 
+        options2();
         options3();
     </script>
 </body>
