@@ -1,7 +1,7 @@
 # Bezpieczny system ERP
 
 ##### Cały projekt został zrobiony korzystając z dokumentacją PHP-a i został wykonany w formie edukacyjnej, aby nauczyć się nowych rzeczy
-##### Wszystko powinno działać według poleceń gdyż w niektórych miejscach są dodane rzeczy które wizualni poprawiają wygląd plików php które zwracają operacje na danych, lecz gdy są jakieś problemy proszę o kontakt
+##### Wszystko powinno działać według poleceń gdyż w niektórych miejscach są dodane rzeczy które wizualni poprawiają wygląd plików php które zwracają operacje na danych, lecz gdy są jakieś problemy lub wątpliwości proszę o kontakt
 
 ## Sklonuj repozytorium
 ```
