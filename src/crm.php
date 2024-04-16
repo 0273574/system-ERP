@@ -1,5 +1,5 @@
 <?php
-
+// Cały plik odnosi się tylko i wyłącznie do modułu CRM każdy "if" odnosi sie do jednej opci w indeksie
 if (isset($_POST['dodaj'])) {
     $plikZDanymi = fopen("plikZDanymi.txt", "a");
     $imie = $_POST['imie'];
