@@ -1,3 +1,9 @@
+### Cały projekt został zrobiony korzystając z dokumentacją PHP-a i został wykonany w formie edukacyjnej, aby nauczyć się nowych rzeczy
+### Wszystko powinno działać według poleceń gdyż w niektórych miejscach są dodane rzeczy które wizualni poprawiają wygląd plików php które zwracają operacje na danych, lecz gdy są jakieś problemy proszę o kontakt
+
+## Sklonuj repozytorium
+```git clone https://github.com/0273574/system-ERP.git
+```
 # Bezpieczny system ERP
 
 Pracujesz w firmie oferującej rozwiązania dla przedsiębiorstw. Nowy klient zwraca się do ciebie o oprogramowanie ERP, którego potrzebuje do zarządzania codziennymi operacjami. Oczywiście, Twoja firma ma wiele skomplikowanych rozwiązań, które mogą być odpowiednie do tego zadania.
@@ -36,10 +42,7 @@ Zaimplementuj moduł HR z podstawowymi i specjalnymi operacjami.
 6. Zwróć liczbę pracowników na oddział w formie tablicy asocjacyjnej (np. ['dep1': 5, 'dep2': 11]).
 
 
-## Sklonuj repozytorium
-```
-$ git clone https://github.com/0273574/system-ERP.git
-```
+
 
 
 
