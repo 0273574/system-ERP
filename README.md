@@ -1,11 +1,14 @@
-### Cały projekt został zrobiony korzystając z dokumentacją PHP-a i został wykonany w formie edukacyjnej, aby nauczyć się nowych rzeczy
-### Wszystko powinno działać według poleceń gdyż w niektórych miejscach są dodane rzeczy które wizualni poprawiają wygląd plików php które zwracają operacje na danych, lecz gdy są jakieś problemy proszę o kontakt
-
-## Sklonuj repozytorium
-```git clone https://github.com/0273574/system-ERP.git
-```
 # Bezpieczny system ERP
 
+##### Cały projekt został zrobiony korzystając z dokumentacją PHP-a i został wykonany w formie edukacyjnej, aby nauczyć się nowych rzeczy
+##### Wszystko powinno działać według poleceń gdyż w niektórych miejscach są dodane rzeczy które wizualni poprawiają wygląd plików php które zwracają operacje na danych, lecz gdy są jakieś problemy proszę o kontakt
+
+## Sklonuj repozytorium
+```
+git clone https://github.com/0273574/system-ERP.git
+```
+
+#Polecenie
 Pracujesz w firmie oferującej rozwiązania dla przedsiębiorstw. Nowy klient zwraca się do ciebie o oprogramowanie ERP, którego potrzebuje do zarządzania codziennymi operacjami. Oczywiście, Twoja firma ma wiele skomplikowanych rozwiązań, które mogą być odpowiednie do tego zadania.
 
 Problem polega na tym, że klient jest niezwykle podejrzliwy wobec technologii chmurowych i ogólnie sieci. Twierdzi, że to, co jest w sieci lub na komputerze podłączonym do Internetu, jest narażone na kradzież, a tajne służby co najmniej czterech krajów regularnie je infiltrują.
