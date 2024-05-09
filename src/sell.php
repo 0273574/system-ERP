@@ -33,7 +33,7 @@ if (isset($_POST['modyfikuj2'])) {
         while (($linia = fgets($plik)) !== false) {
             $slowa = explode(' ', $linia);
             if ($slowa[0] === $nazwaTransakcji) {
-                echo "Znaleziono klienta: $id\n";
+                echo "Znaleziono transakcje: $nazwaTransakcji\n";
                 $linia =  $nazwaTransakcji . ' ' . $cenaTransakcji . ' ' . $nazwaProduktu . ' ' . $dataTransakcji . "\n";
                 fseek($plik, -strlen($linia), SEEK_CUR);
                 fwrite($plik, $linia);
@@ -45,12 +45,12 @@ if (isset($_POST['modyfikuj2'])) {
             }
         }
         if (!$znaleziono) {
-            echo "Nie znaleziono klienta o podanym ID";
+            echo "Nie znaleziono transakcji o podanej nazwie";
         }
     } else {
         echo "Nie udało się otworzyć pliku";
     }
-    fclose($plik);
+    
 }
 
 if (isset($_POST['usun2'])) {
