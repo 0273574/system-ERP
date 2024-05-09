@@ -73,7 +73,7 @@ if (isset($_POST['usun2'])) {
         }
         fclose($plikTmp);
         fclose($plik);
-        echo "Usunięto klienta o ID: $id";
+        echo "Usunięto transakcje o nazwie: $nazwaTransakcji";
     } else {
         echo "Błąd otwierania pliku.";
     }
